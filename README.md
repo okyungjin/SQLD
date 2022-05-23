@@ -4,6 +4,7 @@
     - [in CREATE TABLE](#in-create-table)
     - [in ALTER TABLE](#in-alter-table)
 - [CONSTRAINT](#constraint)
+- [TABLE & COLUMN NAME](#table--column-name)
 - [FUNCTION](#function)
   - [NULL 관련 함수](#null-관련-함수)
     - [NVL / ISNULL](#nvl--isnull)
@@ -39,6 +40,13 @@ ALTER TABLE PLAYER ADD CONSTRAINT PLAYER_FK FOREIGN KEY (TEAM_ID) REFERENCES TEA
 - `FK` 테이블 당 여러 개 생성이 가능하다.
 - `NOT NULL` 명시적으로 NULL 입력을 방지한다.
 
+# TABLE & COLUMN NAME
+`A-Z` `a-z` `0-9` `_` `$` `#` 만 허용한다.
+
+- **`EMP_10` (O)**
+- `100-EMO` (X)
+- `EMP-100` (X)
+- `100_EMP` (X)
 # FUNCTION
 ## NULL 관련 함수
 ### NVL / ISNULL
