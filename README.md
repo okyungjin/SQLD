@@ -13,7 +13,7 @@
 - [TABLE & COLUMN NAME](#table--column-name)
 - [RENAME](#rename)
   - [RENAME TABLE](#rename-table)
-  - [RENAME COULUMN](#rename-coulumn)
+  - [RENAME COLUMN](#rename-column)
 - [NULL 관련 함수](#null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
   - [NULLIF](#nullif)
@@ -116,7 +116,7 @@ RENAME STADIUM TO STADIUM_JSC;
 sp_rename 'dbo.STADIUM', 'STADIUM_JSC';
 ```
 
-## RENAME COULUMN
+## RENAME COLUMN
 `Oracle`
 ```sql
 ALTER TABLE STADIUM RENAME COLUMN STADIUM_ID TO STD_ID;
