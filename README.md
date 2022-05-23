@@ -1,10 +1,42 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
+- [PK, FK CONSTRAINT](#pk-fk-constraint)
+    - [in CREATE TABLE](#in-create-table)
+    - [in ALTER TABLE](#in-alter-table)
 - [FUNCTION](#function)
   - [NULL 관련 함수](#null-관련-함수)
     - [NVL / ISNULL](#nvl--isnull)
     - [NULLIF](#nullif)
     - [COALESCE](#coalesce)
+
+# PK, FK CONSTRAINT
+### in CREATE TABLE
+> Oracle, SQL Server 동일
+```sql
+CREATE TABLE PLAYER (
+  PLAYER_ID CHAR(7) NOT NULL,
+  PLAYER_NAME VHARCHAR2(20) NOT NULL,
+  TEAM_ID CHAR(3) NOT NULL,
+  NICKNAME VHARCHAR2(30),
+  CONSTRAINT PLAYER_PK PRIMARY KEY (PLAYER_ID),
+  CONSTRAINT TEAM_ID FOREIGN KEY (PLAYER) REFERENCES TEAM(TEAM_ID)
+);
+```
+
+### in ALTER TABLE
+> Oracle, SQL Server 동일
+```sql
+-- PRIMARY KEY
+   ALTER TABLE PLAYER
+ADD CONSTRAINT PLAYER_PK
+   PRIMARY KEY (PLAYER_ID);
+
+-- FOREIGN KEY
+   ALTER TABLE PLAYER
+ADD CONSTRAINT PLAYER_FK
+   FOREIGN KEY (TEAM_ID)
+    REFERENCES TEAM(TEAM_ID);
+```
 
 # FUNCTION
 ## NULL 관련 함수
