@@ -5,6 +5,11 @@
     - [in ALTER TABLE](#in-alter-table)
 - [CREATE TABLE & INDEX](#create-table--index)
 - [CONSTRAINT](#constraint)
+  - [UNIQUE KEY (고유키)](#unique-key-고유키)
+  - [PRIMARY KEY (기본키)](#primary-key-기본키)
+  - [FOREIGN KEY (외래키)](#foreign-key-외래키)
+  - [NOT NULL](#not-null)
+  - [CHECK](#check)
 - [TABLE & COLUMN NAME](#table--column-name)
 - [NULL 관련 함수](#null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
@@ -62,10 +67,27 @@ CREATE INDEX IDX_EMP_01 ON EMP (JOIN_DATE);
 
 
 # CONSTRAINT
-- `UNIQUE` = PK + NOT NULL, 테이블 내에서 중복되는 값은 없지만 NULL 입력이 가능하다.
+`CONSTRAINT (제약조건)` 이란 테이블의 특정 컬럼에 설정하는 제약으로, 데이터 무결성을 유지하기 위해서 사용된다.
+
+## UNIQUE KEY (고유키)
+- 테이블 내에서 중복되는 값은 없지만 NULL 입력이 가능하다.
+## PRIMARY KEY (기본키)
+- `PK = UNIQUE + NOT NULL`
 - `PK` 테이블 당 1개만 생성이 가능하다.
-- `FK` 테이블 당 여러 개 생성이 가능하다.
+
+## FOREIGN KEY (외래키)
+- FK는 테이블 생성 시 설정할 수 있다.
+- **FK는 테이블 당 여러 개 존재할 수 있다**.
+- **FK는 NULL 값을 가질 수 있다**.
+- FK 값은 참조 무결성 제약을 받을 수 있다.
+
+## NOT NULL
 - `NOT NULL` 명시적으로 NULL 입력을 방지한다.
+
+## CHECK
+- 입력할 수 있는 값의 범위 등을 제한한다.
+- `CHECK` 제약으로는 `TRUE` or `FALSE` 로 평가할 수 있는 논리식을 지정한다.
+- `CHECK` 제약조건은 데이터베이스에서 데이터의 무결성을 유지학 ㅣ위하여 테이블의 특정 컬럼에 설정하는 제약이다.
 
 # TABLE & COLUMN NAME
 `A-Z` `a-z` `0-9` `_` `$` `#` 만 허용한다.
