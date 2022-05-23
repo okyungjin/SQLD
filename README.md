@@ -3,6 +3,7 @@
 - [PK, FK CONSTRAINT](#pk-fk-constraint)
     - [in CREATE TABLE](#in-create-table)
     - [in ALTER TABLE](#in-alter-table)
+- [CONSTRAINT](#constraint)
 - [FUNCTION](#function)
   - [NULL 관련 함수](#null-관련-함수)
     - [NVL / ISNULL](#nvl--isnull)
@@ -32,6 +33,11 @@ ALTER TABLE PLAYER ADD CONSTRAINT PLAYER_PK PRIMARY KEY (PLAYER_ID);
 -- FOREIGN KEY
 ALTER TABLE PLAYER ADD CONSTRAINT PLAYER_FK FOREIGN KEY (TEAM_ID) REFERENCES TEAM(TEAM_ID);
 ```
+# CONSTRAINT
+- `UNIQUE` = PK + NOT NULL, 테이블 내에서 중복되는 값은 없지만 NULL 입력이 가능하다.
+- `PK` 테이블 당 1개만 생성이 가능하다.
+- `FK` 테이블 당 여러 개 생성이 가능하다.
+- `NOT NULL` 명시적으로 NULL 입력을 방지한다.
 
 # FUNCTION
 ## NULL 관련 함수
