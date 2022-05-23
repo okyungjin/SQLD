@@ -11,6 +11,9 @@
   - [NOT NULL](#not-null)
   - [CHECK](#check)
 - [TABLE & COLUMN NAME](#table--column-name)
+- [RENAME](#rename)
+  - [RENAME TABLE](#rename-table)
+  - [RENAME COULUMN](#rename-coulumn)
 - [NULL 관련 함수](#null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
   - [NULLIF](#nullif)
@@ -96,6 +99,35 @@ CREATE INDEX IDX_EMP_01 ON EMP (JOIN_DATE);
 - `100-EMO` (X)
 - `EMP-100` (X)
 - `100_EMP` (X)
+
+# RENAME
+## RENAME TABLE
+> STADIUM 테이블의 이름을 STADIUM_JSC로 변경하는 SQL을 작성하시오. (ANSI 표준 기준)
+
+`Oracle`
+```sql
+RENAME STADIUM TO STADIUM_JSC;
+```
+
+<br>
+
+`SQL Server`
+```sql
+sp_rename 'dbo.STADIUM', 'STADIUM_JSC';
+```
+
+## RENAME COULUMN
+`Oracle`
+```sql
+ALTER TABLE STADIUM RENAME COLUMN STADIUM_ID TO STD_ID;
+```
+
+<br>
+
+`SQL Server`
+```sql
+sp_rename 'dbo.STADIUM.STADIUM_ID', 'STD_ID', 'COLUMN';
+```
 # NULL 관련 함수
 ## NVL / ISNULL
 ```sql
