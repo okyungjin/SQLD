@@ -1,25 +1,27 @@
 # Table of Contents
 - [Table of Contents](#table-of-contents)
-- [PK, FK CONSTRAINT](#pk-fk-constraint)
+- [👉 PK, FK CONSTRAINT](#-pk-fk-constraint)
     - [in CREATE TABLE](#in-create-table)
     - [in ALTER TABLE](#in-alter-table)
-- [CREATE TABLE & INDEX](#create-table--index)
-- [CONSTRAINT](#constraint)
+- [👉 CREATE TABLE & INDEX](#-create-table--index)
+- [👉 CONSTRAINT](#-constraint)
   - [UNIQUE KEY (고유키)](#unique-key-고유키)
   - [PRIMARY KEY (기본키)](#primary-key-기본키)
   - [FOREIGN KEY (외래키)](#foreign-key-외래키)
+    - [[FK] DELETE / UPDATE RULE](#fk-delete--update-rule)
+    - [[FK] INSERT RULE](#fk-insert-rule)
   - [NOT NULL](#not-null)
   - [CHECK](#check)
-- [TABLE & COLUMN NAME](#table--column-name)
-- [RENAME](#rename)
+- [👉 TABLE & COLUMN NAME](#-table--column-name)
+- [👉 RENAME](#-rename)
   - [RENAME TABLE](#rename-table)
   - [RENAME COLUMN](#rename-column)
-- [NULL 관련 함수](#null-관련-함수)
+- [👉 NULL 관련 함수](#-null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
   - [NULLIF](#nullif)
   - [COALESCE](#coalesce)
 
-# PK, FK CONSTRAINT
+# 👉 PK, FK CONSTRAINT
 ### in CREATE TABLE
 > Oracle, SQL Server 동일
 ```sql
@@ -43,7 +45,7 @@ ALTER TABLE PLAYER ADD CONSTRAINT PLAYER_PK PRIMARY KEY (PLAYER_ID);
 ALTER TABLE PLAYER ADD CONSTRAINT PLAYER_FK FOREIGN KEY (TEAM_ID) REFERENCES TEAM(TEAM_ID);
 ```
 
-# CREATE TABLE & INDEX
+# 👉 CREATE TABLE & INDEX
 ```sql
 -- Option 1)
 CREATE TABLE EMP (
@@ -69,7 +71,7 @@ CREATE INDEX IDX_EMP_01 ON EMP (JOIN_DATE);
 ```
 
 
-# CONSTRAINT
+# 👉 CONSTRAINT
 `CONSTRAINT (제약조건)` 이란 테이블의 특정 컬럼에 설정하는 제약으로, 데이터 무결성을 유지하기 위해서 사용된다.
 
 ## UNIQUE KEY (고유키)
@@ -84,6 +86,22 @@ CREATE INDEX IDX_EMP_01 ON EMP (JOIN_DATE);
 - **FK는 NULL 값을 가질 수 있다**.
 - FK 값은 참조 무결성 제약을 받을 수 있다.
 
+### [FK] DELETE / UPDATE RULE
+- **`RESTRICT` Child 테이블에 PK 값이 없는 경우에만 Master 삭제 허용**
+- `CASCADE` Master 삭제 시 Child 같이 삭제
+- `SET NULL` Master 삭제 시 Child 해당 필드 NULL
+- `SET DEFAULT` Master 삭제 시 Child 해당 필드 Default 값으로 설정
+- `NO ACTION` 참조 무결성을 위반하는 삭제 / 수정 action을 취하지 않음
+
+<br>
+
+### [FK] INSERT RULE
+- **`AUTOMATIC` Master 테이블에 PK가 없는 경우 Master PK 생성 후 Child 입력**
+- **`DEPENDENT` Master 테이블에 PK가 존재할 때만 Child 입력 허용**
+- `SET NULL` Maseter 테이블에 PK가 없는 경우 Child 외부키를 NULL 값으로 처리
+- `SET DEFAULT` Maseter 테이블에 PK가 없는 경우 Child 외부키를 Default 값으로 처리
+- `NO ACTION` 참조 무결성을 위반하는 입력 액션을 취하지 않음
+
 ## NOT NULL
 - `NOT NULL` 명시적으로 NULL 입력을 방지한다.
 
@@ -92,7 +110,7 @@ CREATE INDEX IDX_EMP_01 ON EMP (JOIN_DATE);
 - `CHECK` 제약으로는 `TRUE` or `FALSE` 로 평가할 수 있는 논리식을 지정한다.
 - `CHECK` 제약조건은 데이터베이스에서 데이터의 무결성을 유지학 ㅣ위하여 테이블의 특정 컬럼에 설정하는 제약이다.
 
-# TABLE & COLUMN NAME
+# 👉 TABLE & COLUMN NAME
 `A-Z` `a-z` `0-9` `_` `$` `#` 만 허용한다.
 
 - **`EMP_10` (O)**
@@ -100,7 +118,7 @@ CREATE INDEX IDX_EMP_01 ON EMP (JOIN_DATE);
 - `EMP-100` (X)
 - `100_EMP` (X)
 
-# RENAME
+# 👉 RENAME
 ## RENAME TABLE
 > STADIUM 테이블의 이름을 STADIUM_JSC로 변경하는 SQL을 작성하시오. (ANSI 표준 기준)
 
@@ -128,7 +146,7 @@ ALTER TABLE STADIUM RENAME COLUMN STADIUM_ID TO STD_ID;
 ```sql
 sp_rename 'dbo.STADIUM.STADIUM_ID', 'STD_ID', 'COLUMN';
 ```
-# NULL 관련 함수
+# 👉 NULL 관련 함수
 ## NVL / ISNULL
 ```sql
 NVL(exp1, exp2)
