@@ -17,6 +17,7 @@
   - [RENAME TABLE](#rename-table)
   - [RENAME COLUMN](#rename-column)
 - [👉 DROP / TRUNCATE / DELETE](#-drop--truncate--delete)
+- [👉 DATABASE TRANSACTION](#-database-transaction)
 - [👉 NULL 관련 함수](#-null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
   - [NULLIF](#nullif)
@@ -155,6 +156,13 @@ sp_rename 'dbo.STADIUM.STADIUM_ID', 'STD_ID', 'COLUMN';
 | Auto Commit | Auto Commit | **사용자 Commit** |
 | 테이블이 사용했던 Storage를 모두 release | 테이블이 사용했던 Storage 중 최초 테이블 생성 시 할당된 Storage만 남기고 release | 데이터를 모두 Delete해도 사용했던 Storage는 release되지 않음 |
 | 테이블의 정의 자체를 완전히 삭제함 | 테이블을 최초 생성된 초기 상태로 만듬 | 데이터만 삭제
+
+# 👉 DATABASE TRANSACTION
+데이터베이스 트랜잭션의 4가지 특징
+- `원자성(atomicity)` **All or Nothing**, 트랜잭선에서 정의된 연산들은 모두 성공적으로 실행되던지, 아니면 전혀 실행되지 않은 상태로 남아 있어야 한다. 
+- `일관성(consistency)` 트랜잭션이 실행되기 전의 데이터베이스 내용이 잘못 되어 있지 않다면,  트랜잭션이 실행된 이후에도 데이터베이스의 내용에 잘못이 있으면 안 된다.
+- `고립성(isolation)` 트랜잭션이 실행되는 도중에 다른 트랜잭션의 영향을 받아 잘못된 결과를 만들어서는 안 된다.
+- `지속성(durability)` 트랜잭션이 성공적으로 수행되면 그 트랜잭션이 갱신한 데이터베이스의 내용은 영구적으로 저장된다.
 
 
 # 👉 NULL 관련 함수
