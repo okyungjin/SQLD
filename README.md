@@ -20,6 +20,7 @@
 - [👉 DATABASE TRANSACTION](#-database-transaction)
   - [트랜잭션의 4가지 특징](#트랜잭션의-4가지-특징)
   - [트랜잭션의 격리성이 낮은 경우 발생할 수 있는 문제점](#트랜잭션의-격리성이-낮은-경우-발생할-수-있는-문제점)
+  - [ROLLBACK](#rollback)
 - [👉 NULL 관련 함수](#-null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
   - [NULLIF](#nullif)
@@ -170,6 +171,9 @@ sp_rename 'dbo.STADIUM.STADIUM_ID', 'STD_ID', 'COLUMN';
 - `Dirty Read` 다른 트랙잭션에 의해 수정되었지만 **아직 커밋되지 않은 데이터**를 읽는 것
 - `Non-Repeatable Read` 한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 그 사이에 다른 트랜잭션이 값을 수정 또는 삭제하는 바람에 두 쿼리 결과가 다르게 나타나는 현상을 말한다.
 - `Phantom Read` 한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 첫 번째 쿼리에 없던 유령 레코드가 두 번째 쿼리에서 나타나는 현상을 말한다.
+
+## ROLLBACK
+`ROLLBACK` 구문은 `COMMIT`되지 않은 상위의 모든 트랜잭션을 rollack한다.
 
 
 # 👉 NULL 관련 함수
