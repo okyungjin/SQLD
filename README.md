@@ -1,5 +1,5 @@
-# Table of Contents
-- [Table of Contents](#table-of-contents)
+# 👉 Table of Contents
+- [👉 Table of Contents](#-table-of-contents)
 - [👉 PK, FK CONSTRAINT](#-pk-fk-constraint)
     - [in CREATE TABLE](#in-create-table)
     - [in ALTER TABLE](#in-alter-table)
@@ -16,6 +16,7 @@
 - [👉 RENAME](#-rename)
   - [RENAME TABLE](#rename-table)
   - [RENAME COLUMN](#rename-column)
+- [👉 DROP / TRUNCATE / DELETE](#-drop--truncate--delete)
 - [👉 NULL 관련 함수](#-null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
   - [NULLIF](#nullif)
@@ -146,6 +147,16 @@ ALTER TABLE STADIUM RENAME COLUMN STADIUM_ID TO STD_ID;
 ```sql
 sp_rename 'dbo.STADIUM.STADIUM_ID', 'STD_ID', 'COLUMN';
 ```
+# 👉 DROP / TRUNCATE / DELETE
+| DROP  | TRUNCATE | DELETE |
+| ------------- | ------------- | ------------- | 
+| DDL | DDL  <br>  (일부 DML 성격 가짐) | DML |
+| Rollback 불가능 | Rollback 불가능 | Commit 이전 Rollback 가능 | 
+| Auto Commit | Auto Commit | **사용자 Commit** |
+| 테이블이 사용했던 Storage를 모두 release | 테이블이 사용했던 Storage 중 최초 테이블 생성 시 할당된 Storage만 남기고 release | 데이터를 모두 Delete해도 사용했던 Storage는 release되지 않음 |
+| 테이블의 정의 자체를 완전히 삭제함 | 테이블을 최초 생성된 초기 상태로 만듬 | 데이터만 삭제
+
+
 # 👉 NULL 관련 함수
 ## NVL / ISNULL
 ```sql
