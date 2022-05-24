@@ -21,6 +21,7 @@
   - [트랜잭션의 4가지 특징](#트랜잭션의-4가지-특징)
   - [트랜잭션의 격리성이 낮은 경우 발생할 수 있는 문제점](#트랜잭션의-격리성이-낮은-경우-발생할-수-있는-문제점)
   - [ROLLBACK](#rollback)
+  - [SAVEPOINT](#savepoint)
 - [👉 NULL 관련 함수](#-null-관련-함수)
   - [NVL / ISNULL](#nvl--isnull)
   - [NULLIF](#nullif)
@@ -175,6 +176,24 @@ sp_rename 'dbo.STADIUM.STADIUM_ID', 'STD_ID', 'COLUMN';
 ## ROLLBACK
 `ROLLBACK` 구문은 `COMMIT`되지 않은 상위의 모든 트랜잭션을 rollack한다.
 
+## SAVEPOINT
+`SAVEPOINT(저장점)` 을 정의하면 롤백할 때 트랜잭션에 포함된 전체 작업을 롤백하는 것이 아니라, **현 시점에서 SAVEPOINT**까지 트랜잭션의 일부만 롤백할 수 있다.
+
+`Oracle`
+```sql
+SAVEPOINT SVPT1;
+...
+ROLLBACK TO SVPT1
+```
+
+<br>
+
+`SQL Server`
+```sql
+SAVE TRANSACTION SVTR1;
+...
+ROLLBACK TRANSACTION SVTR1;
+```
 
 # 👉 NULL 관련 함수
 ## NVL / ISNULL
