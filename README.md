@@ -22,10 +22,12 @@
   - [트랜잭션의 격리성이 낮은 경우 발생할 수 있는 문제점](#트랜잭션의-격리성이-낮은-경우-발생할-수-있는-문제점)
   - [ROLLBACK](#rollback)
   - [SAVEPOINT](#savepoint)
-- [👉 NULL 관련 함수](#-null-관련-함수)
-  - [NVL / ISNULL](#nvl--isnull)
-  - [NULLIF](#nullif)
-  - [COALESCE](#coalesce)
+- [👉 NULL](#-null)
+  - [INSERT NULL](#insert-null)
+  - [NULL 관련 함수](#null-관련-함수)
+    - [NVL / ISNULL](#nvl--isnull)
+    - [NULLIF](#nullif)
+    - [COALESCE](#coalesce)
 
 # 👉 PK, FK CONSTRAINT
 ### in CREATE TABLE
@@ -195,8 +197,29 @@ SAVE TRANSACTION SVTR1;
 ROLLBACK TRANSACTION SVTR1;
 ```
 
-# 👉 NULL 관련 함수
-## NVL / ISNULL
+# 👉 NULL
+## INSERT NULL
+**Oracle에서는 공백 문자(`''`)를 INSERT 시에 데이터가 `NULL`로 입력된다.**
+
+(SQL Server는 공백 문자로 INSERT 된다.)
+
+```sql
+INSERT INTO 서비스 VALUES ('999', '', '2015-11-11');
+```
+
+따라서 SELECT 다음과 같이 검색하면 검색 결과가 나오지 않는다.
+```sql
+-- 🥲 BAD
+SELECT * FROM 서비스 WHERE 서비스명 = '';
+
+-- 😎 GOOD 
+SELECT * FROM 서비스 WHERE 서비스명 IS NULL;
+```
+
+<br>
+
+##  NULL 관련 함수
+### NVL / ISNULL
 ```sql
 NVL(exp1, exp2)
 ISNULL(exp1, exp2)
@@ -204,7 +227,7 @@ ISNULL(exp1, exp2)
 `exp1` 의 값이 NULL이면 `exp2` 값을 반환한다.
 (단, `exp1`, `exp2` 데이터의 타입이 같아야 함)
 
-## NULLIF
+### NULLIF
 ```sql
 NULLIF(exp1, exp2)
 ```
@@ -213,7 +236,7 @@ NULLIF(exp1, exp2)
 
 반환한다.
 
-## COALESCE
+### COALESCE
 ```sql
 COALESCE(exp1, exp2, ...)
 ```
