@@ -22,6 +22,9 @@
   - [트랜잭션의 격리성이 낮은 경우 발생할 수 있는 문제점](#트랜잭션의-격리성이-낮은-경우-발생할-수-있는-문제점)
   - [ROLLBACK](#rollback)
   - [SAVEPOINT](#savepoint)
+- [👉 내장 함수 (Built-in Function)](#-내장-함수-built-in-function)
+  - [단일행 함수](#단일행-함수)
+  - [다중행 함수](#다중행-함수)
 - [👉 NULL](#-null)
   - [INSERT NULL](#insert-null)
   - [NULL 관련 함수](#null-관련-함수)
@@ -197,6 +200,30 @@ SAVE TRANSACTION SVTR1;
 ROLLBACK TRANSACTION SVTR1;
 ```
 
+# 👉 내장 함수 (Built-in Function)
+```
+벤더 제공 함수/
+├── 내장 함수/
+│   ├── 단일행 함수
+│   └── 다중행 함수
+└── 사용자 정의 함수
+```
+## 단일행 함수
+단일행 값이 입력되는 함수이다.
+- `문자형 함수` ex) LOWER, UPPER, SUBSTR, LENGTH, TRIM, ...
+- `숫자형 함수` ex) ABS, ROUND, CEIL, FLOOR, ...
+- `날짜형 함수` ex) SYSDATE, TO_NUMBER, TO_CHAR, YAER | MONTH | DAY, ...
+- `변환형 함수` ex) TO_NUMBER, TO_CHAR, TO_DATE, CAST, CONVERT
+- `NULL 관련 함수` ex) NVL / ISNULL, NULLIF, COALESCE
+  
+
+## 다중행 함수
+여러 행의 값이 입력되는 함수이다.
+- 집계 함수 (Aggregate Function)
+- 그룹 함수 (Group Function)
+- 윈도우 함수 (Window Function)
+ 
+
 # 👉 NULL
 ## INSERT NULL
 **Oracle에서는 공백 문자(`''`)를 INSERT 시에 데이터가 `NULL`로 입력된다.**
@@ -220,6 +247,9 @@ SELECT * FROM 서비스 WHERE 서비스명 IS NULL;
 
 ##  NULL 관련 함수
 ### NVL / ISNULL
+
+> Oracle: `NVL`  /  SQL Server: `ISNULL`
+
 ```sql
 NVL(exp1, exp2)
 ISNULL(exp1, exp2)
@@ -241,3 +271,4 @@ NULLIF(exp1, exp2)
 COALESCE(exp1, exp2, ...)
 ```
 NULL이 아닌 최초의 표현식을 반환한다. 모든 표현식이 NULL이라면 NULL을 반환한다.
+
