@@ -264,6 +264,8 @@ ISNULL(exp1, exp2)
 (단, `exp1`, `exp2` 데이터의 타입이 같아야 함)
 
 ### NULLIF
+> **`IFNULL` 이 아님**에 주의
+
 ```sql
 NULLIF(exp1, exp2)
 ```
