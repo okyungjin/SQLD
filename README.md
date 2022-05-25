@@ -222,6 +222,8 @@ ROLLBACK TRANSACTION SVTR1;
 
 ## 다중행 함수
 여러 행의 값이 입력되는 함수이다.
+> 다중행 함수는 단일행 함수와 동일하게 **단일 값을 반환**한다.
+
 - 집계 함수 (Aggregate Function)
 - 그룹 함수 (Group Function)
 - 윈도우 함수 (Window Function)
