@@ -210,6 +210,9 @@ ROLLBACK TRANSACTION SVTR1;
 ```
 ## 단일행 함수
 단일행 값이 입력되는 함수이다.
+
+> 단일행 함수는 `SELECT`, `WHERE`, `ORDER BY`, `UPDATE의 SET절`에 사용이 가능하다.
+
 - `문자형 함수` ex) LOWER, UPPER, SUBSTR, LENGTH, TRIM, ...
 - `숫자형 함수` ex) ABS, ROUND, CEIL, FLOOR, ...
 - `날짜형 함수` ex) SYSDATE, TO_NUMBER, TO_CHAR, YAER | MONTH | DAY, ...
