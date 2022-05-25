@@ -31,6 +31,7 @@
     - [NVL / ISNULL](#nvl--isnull)
     - [NULLIF](#nullif)
     - [COALESCE](#coalesce)
+  - [NULL인지 검사할 때는 `IS NULL`](#null인지-검사할-때는-is-null)
 
 # 👉 PK, FK CONSTRAINT
 ### in CREATE TABLE
@@ -277,3 +278,11 @@ COALESCE(exp1, exp2, ...)
 ```
 NULL이 아닌 최초의 표현식을 반환한다. 모든 표현식이 NULL이라면 NULL을 반환한다.
 
+<br>
+
+## NULL인지 검사할 때는 `IS NULL`
+> NULL인지 검사할 때는 `IS NULL` 을 사용해야 한다. 다음과 같은 문제에 낚이지 말자!
+
+```sql
+SELECT COUNT(C0L1) FROM TAB1 WHERE COL2 = NULL;
+```
