@@ -32,6 +32,7 @@
     - [NULLIF](#nullif)
     - [COALESCE](#coalesce)
   - [NULL인지 검사할 때는 `IS NULL`](#null인지-검사할-때는-is-null)
+  - [NULL의 ORDER BY 순서](#null의-order-by-순서)
 
 # 👉 PK, FK CONSTRAINT
 ### in CREATE TABLE
@@ -288,3 +289,10 @@ NULL이 아닌 최초의 표현식을 반환한다. 모든 표현식이 NULL이�
 ```sql
 SELECT COUNT(C0L1) FROM TAB1 WHERE COL2 = NULL;
 ```
+
+<br>
+
+## NULL의 ORDER BY 순서
+- **Oracle에서는 NULL 값을 가장 큰 값으로 간주**하여 오름차순으로 정렬 시 가장 마지막에, 내림차순으로 정렬 시 가장 처음에 위치한다.
+
+- **SQL Server에서는 NULL 값을 가장 작은 값으로 간주**하여 Oracle의 NULL과 정렬이 반대이다.
