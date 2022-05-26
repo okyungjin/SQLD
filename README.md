@@ -33,6 +33,9 @@
     - [COALESCE](#coalesce)
   - [NULL인지 검사할 때는 `IS NULL`](#null인지-검사할-때는-is-null)
   - [NULL의 ORDER BY 순서](#null의-order-by-순서)
+- [👉 STANDARD SQL](#-standard-sql)
+  - [일반 집합 연산자](#일반-집합-연산자)
+  - [순수 관계 연산자](#순수-관계-연산자)
 
 # 👉 PK, FK CONSTRAINT
 ### in CREATE TABLE
@@ -296,3 +299,24 @@ SELECT COUNT(C0L1) FROM TAB1 WHERE COL2 = NULL;
 - **Oracle에서는 NULL 값을 가장 큰 값으로 간주**하여 오름차순으로 정렬 시 가장 마지막에, 내림차순으로 정렬 시 가장 처음에 위치한다.
 
 - **SQL Server에서는 NULL 값을 가장 작은 값으로 간주**하여 Oracle의 NULL과 정렬이 반대이다.
+
+
+<br>
+
+# 👉 STANDARD SQL
+## 일반 집합 연산자
+1. UNION `UNION`
+2. INTERSECTION `INTERSECT`
+3. DIFFERENCE `MINUS / EXCEPT`
+4. PRODUCT `CROSS JOIN`
+
+![image](https://user-images.githubusercontent.com/31913666/170523271-1e072708-d55b-4464-b569-e38619668dc5.png)
+
+
+## 순수 관계 연산자
+1. SELECT `WHERE`
+2. PROJECT `SELECT` 👉 *CARTESIAN PRODUCT* 라고도 부른다
+3. JOIN `JOIN`
+4. DIVIDE (현재는 사용되지 않음)
+
+![image](https://user-images.githubusercontent.com/31913666/170523614-0318d69e-e521-40ed-80ed-a0c414353bd4.png)
